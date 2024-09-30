@@ -24,7 +24,7 @@ def get_gmail_service():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'D:/Downloads/client_secret_141807715480-nb68740ltjqabdo0hspdo7nk12acnft4.apps.googleusercontent.com.json', SCOPES)
+                'credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
@@ -50,7 +50,7 @@ def main():
 
     while True:
         # Example: Delete emails from a specific sender
-        query = "noreply-local-guides@google.com"
+        query = "example@google.com"
         if not clean_inbox(service, query):
             print("No more emails to delete using this query. Exiting")
             break
